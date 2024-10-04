@@ -23,7 +23,8 @@ async function connecting_client() {
     .then(data => {
         console.log(data);
         sessionStorage.setItem("environment", environment);
-    })
+        window.location.replace("/client/signup-page/index.html");
+    })     
     .catch(error => {
         console.error('There was a problem with the fetch operation: ', error);
     })
