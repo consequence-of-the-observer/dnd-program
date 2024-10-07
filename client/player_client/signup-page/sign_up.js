@@ -13,7 +13,8 @@ function gatherData() {
         lname: document.getElementById("lname").value,
         username: document.getElementById("username").value,
         password: document.getElementById("password").value,
-        email: document.getElementById("email").value
+        email: document.getElementById("email").value,
+        userType: 'player'
     };
 
     return values;

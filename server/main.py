@@ -11,6 +11,7 @@ class User(BaseModel):
     username: str
     password: str
     email: str
+    userType: str
 
 class Con_User(BaseModel):
     username: str
@@ -83,7 +84,7 @@ def create_user(user: User):
         'password': user.password,
         'email': user.email,
         'uuid': str(new_uuid),
-        'userType': 'player'
+        'userType': user.userType
     }
 
     print(data)
