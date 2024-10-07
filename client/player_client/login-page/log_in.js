@@ -32,5 +32,6 @@ function confirmRealAccount(data) {
     console.log("account does not exists");
   }else {
     console.log("account exists");
+    window.location.replace("/player_client/client/home-page/index.html");
   }
 }
