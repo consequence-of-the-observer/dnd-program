@@ -8,5 +8,5 @@ function get_environment() {
 try {
     get_environment();
 }catch(err) {
-    window.location.replace("client/index.html");
+    window.location.replace("/client/gameMaster_client/index.html");
 }

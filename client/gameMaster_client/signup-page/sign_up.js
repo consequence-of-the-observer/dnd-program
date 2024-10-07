@@ -4,7 +4,7 @@ function signup_button() {
 
     postUser(data);
 
-    window.location.replace("/gameMaster_client/client/login-page/index.html");
+    window.location.replace("/client/gameMaster_client/login-page/index.html");
 }
 
 function gatherData() {

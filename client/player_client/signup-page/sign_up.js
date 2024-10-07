@@ -4,7 +4,7 @@ function signup_button() {
 
     postUser(data);
 
-    window.location.replace("/player_client/client/login-page/index.html");
+    window.location.replace("/client/player_client/login-page/index.html");
 }
 
 function gatherData() {

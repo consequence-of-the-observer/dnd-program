@@ -32,6 +32,6 @@ function confirmRealAccount(data) {
     console.log("account does not exists");
   }else {
     console.log("account exists");
-    window.location.replace("/gameMaster_client/client/home-page/index.html");
+    window.location.replace("/client/gameMaster_client/home-page/index.html");
   }
 }

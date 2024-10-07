@@ -8,5 +8,5 @@ function get_environment() {
 try {
     get_environment();
 }catch(err) {
-    window.location.replace("player_client/client/index.html");
+    window.location.replace("/client/player_client/index.html");
 }
