@@ -3,6 +3,8 @@ function signup_button() {
     console.log(data);
 
     postUser(data);
+
+    window.location.replace("/client/login-page/index.html");
 }
 
 function gatherData() {
