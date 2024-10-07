@@ -23,5 +23,14 @@ function postConfirmUser(val) {
         }
       })
         .then((response) => response.json())
-        .then((json) => console.log(json));
+        .then((json) => confirmRealAccount(json));
+}
+
+function confirmRealAccount(data) {
+  console.log(data);
+  if(data.real_account === false) {
+    console.log("account does not exists");
+  }else {
+    console.log("account exists");
+  }
 }

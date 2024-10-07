@@ -41,6 +41,32 @@ def sql_createUser(data):
 
     print("account created")
 
+def sql_confirmUser(data):
+    conn = sqlite3.connect('server.db')
+
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT * FROM users WHERE username='"+data['username']+"'")
+    values = cursor.fetchone()
+
+    print(values)
+
+    real_password = values[3]
+
+    if real_password == data["password"]:
+        new_data = {
+            "first_name": values[0],
+            "last_name": values[1],
+            "username": values[2],
+            "email": values[4],
+            "uuid": values[5],
+            "userType": values[6]
+        }
+
+        return new_data
+    else:
+        return {"real_account": False}
+
 @app.get('/')
 def connecting_server():
     return {"connected": True}
@@ -74,4 +100,6 @@ def confirm_user(con_user: Con_User):
 
     print(data)
 
-    return data
+    find_account = sql_confirmUser(data)
+
+    return find_account
