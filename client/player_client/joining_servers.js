@@ -13,7 +13,12 @@ function join_server(host_name) {
 }
 
 async function connecting_client() {
-    fetch('http://'+environment)
+    fetch('http://'+environment,{
+        headers: {
+            "Content-type": "application/json; charset=UTF-8",
+            "ngrok-skip-browser-warning": "69420"
+        }
+        })
     .then(response => {
         if(!response.ok) {
             throw new Error('Network response was no ok');

@@ -25,8 +25,9 @@ function postUser(val) {
         method: "POST",
         body: JSON.stringify(val),
         headers: {
-          "Content-type": "application/json; charset=UTF-8"
-        }
+          "Content-type": "application/json; charset=UTF-8",
+          "ngrok-skip-browser-warning": "69420"
+      }
       })
         .then((response) => response.json())
         .then((json) => console.log(json));
