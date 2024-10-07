@@ -32,8 +32,8 @@ def sql_createUser(data):
     cursor = conn.cursor()
 
     cursor.execute('''CREATE TABLE IF NOT EXISTS users
-                    (first_name, last_name, username, password, email, uuid)''')
-    cursor.execute("INSERT INTO users VALUES ('"+data['first_name']+"','"+data['last_name']+"','"+data['username']+"','"+data['password']+"','"+data['email']+"','"+data['uuid']+"')")
+                    (first_name, last_name, username, password, email, uuid, userType)''')
+    cursor.execute("INSERT INTO users VALUES ('"+data['first_name']+"','"+data['last_name']+"','"+data['username']+"','"+data['password']+"','"+data['email']+"','"+data['uuid']+"', '"+data['userType']+"')")
 
     conn.commit()
     
@@ -46,7 +46,7 @@ def connecting_server():
     return {"connected": True}
 
 
-@app.post('/registerUser')
+@app.post('/registerPlayerUser')
 def create_user(user: User):
     new_uuid = uuid.uuid4()
 
@@ -56,7 +56,8 @@ def create_user(user: User):
         'username': user.username,
         'password': user.password,
         'email': user.email,
-        'uuid': str(new_uuid)
+        'uuid': str(new_uuid),
+        'userType': 'player'
     }
 
     print(data)
@@ -64,7 +65,7 @@ def create_user(user: User):
 
     return data
 
-@app.post("/confirmUser")
+@app.post("/confirmPlayerUser")
 def confirm_user(con_user: Con_User):
     data = {
         "username": con_user.username,

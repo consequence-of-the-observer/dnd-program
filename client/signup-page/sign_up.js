@@ -20,7 +20,7 @@ function gatherData() {
 }
 
 function postUser(val) {
-    fetch("http://"+environment+"/registerUser", {
+    fetch("http://"+environment+"/registerPlayerUser", {
         method: "POST",
         body: JSON.stringify(val),
         headers: {
