@@ -12,6 +12,10 @@ class User(BaseModel):
     password: str
     email: str
 
+class Con_User(BaseModel):
+    username: str
+    password: str
+
 app = FastAPI()
 
 app.add_middleware(
@@ -57,5 +61,16 @@ def create_user(user: User):
 
     print(data)
     sql_createUser(data)
+
+    return data
+
+@app.post("/confirmUser")
+def confirm_user(con_user: Con_User):
+    data = {
+        "username": con_user.username,
+        "password": con_user.password
+    }
+
+    print(data)
 
     return data
