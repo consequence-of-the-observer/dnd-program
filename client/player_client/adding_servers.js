@@ -23,6 +23,14 @@ function adding_server_table() {
             <b>Remember this Server?:</b>
             <input type="checkbox" id="keepServer">
             <br>
+            <div>
+                <b>Http or Https:</b>
+                    <select id="request_type">
+                        <option value="https://">Https</option>
+                        <option value="http://">Http</option>
+                    </select>
+                </div>
+            <br>
             <button onClick="saveServerData()">Add</button>
         `;
     }
@@ -32,7 +40,8 @@ function saveServerData() {
     let data = {
         serverName: document.getElementById("serverName").value,
         serverAddress: document.getElementById("serverAddress").value,
-        keepServer: document.getElementById("keepServer").value
+        keepServer: document.getElementById("keepServer").value,
+        serverRequestType: document.getElementById("request_type").value
     };
 
     console.log(data);

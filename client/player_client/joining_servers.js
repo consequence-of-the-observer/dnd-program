@@ -7,30 +7,30 @@ function join_server(host_name) {
 
     console.log(data.serverAddress);
 
-    environment = data.serverAddress;
+    environment = data.serverRequestType + data.serverAddress;
 
     connecting_client();
 }
 
 async function connecting_client() {
-    fetch('http://'+environment,{
-        headers: {
-            "Content-type": "application/json; charset=UTF-8",
-            "ngrok-skip-browser-warning": "69420"
-        }
+        fetch(environment,{
+            headers: {
+                "Content-type": "application/json; charset=UTF-8",
+                "ngrok-skip-browser-warning": "69420"
+            }
+            })
+        .then(response => {
+            if(!response.ok) {
+                throw new Error('Network response was no ok');
+            }
+            return response.json()
         })
-    .then(response => {
-        if(!response.ok) {
-            throw new Error('Network response was no ok');
-        }
-        return response.json()
-    })
-    .then(data => {
-        console.log(data);
-        sessionStorage.setItem("environment", environment);
-        window.location.replace("/client/player_client/signup-page/index.html");
-    })     
-    .catch(error => {
-        console.error('There was a problem with the fetch operation: ', error);
-    })
+        .then(data => {
+            console.log(data);
+            sessionStorage.setItem("environment", environment);
+            window.location.replace("/client/player_client/signup-page/index.html");
+        })     
+        .catch(error => {
+            console.error('There was a problem with the fetch operation: ', error);
+        })
 }

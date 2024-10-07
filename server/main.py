@@ -50,6 +50,9 @@ def sql_confirmUser(data):
     cursor.execute("SELECT * FROM users WHERE username='"+data['username']+"'")
     values = cursor.fetchone()
 
+    conn.commit()
+    conn.close()
+
     print(values)
 
     real_password = values[3]

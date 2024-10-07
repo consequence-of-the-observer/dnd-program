@@ -15,7 +15,7 @@ function gatherData() {
 }
 
 function postConfirmUser(val) {
-    fetch("http://"+environment+"/confirmPlayerUser", {
+    fetch(environment+"/confirmPlayerUser", {
         method: "POST",
         body: JSON.stringify(val),
         headers: {

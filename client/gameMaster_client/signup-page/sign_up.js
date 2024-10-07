@@ -20,8 +20,15 @@ function gatherData() {
     return values;
 }
 
+function optionsStart() {
+  fetch(environment+"registerPlayerUser", {
+    method: "OPTIONS"
+  })
+}
+
 function postUser(val) {
-    fetch("http://"+environment+"/registerPlayerUser", {
+  optionsStart();
+    fetch(environment+"/registerPlayerUser", {
         method: "POST",
         body: JSON.stringify(val),
         headers: {
