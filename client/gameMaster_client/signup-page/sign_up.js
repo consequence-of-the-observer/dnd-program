@@ -1,10 +1,8 @@
 function signup_button() {
-    let data = gatherData();
-    console.log(data);
+  let data = gatherData();
+  console.log(data);
 
-    postUser(data);
-
-    window.location.replace("/client/gameMaster_client/login-page/index.html");
+  postUser(data);
 }
 
 function gatherData() {
@@ -20,22 +18,19 @@ function gatherData() {
     return values;
 }
 
-function optionsStart() {
-  fetch(environment+"registerPlayerUser", {
-    method: "OPTIONS"
+function postUser(val) {
+  fetch(environment+"/registerPlayerUser", {
+    method: "POST",
+    body: JSON.stringify(val),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+      "ngrok-skip-browser-warning": "69420"
+  }
   })
+    .then((response) => response.json())
+    .then((json) => signup_success(json));
 }
 
-function postUser(val) {
-  optionsStart();
-    fetch(environment+"/registerPlayerUser", {
-        method: "POST",
-        body: JSON.stringify(val),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-          "ngrok-skip-browser-warning": "69420"
-      }
-      })
-        .then((response) => response.json())
-        .then((json) => console.log(json));
+function signup_success(data) {
+  window.location.replace("/client/player_client/login-page/index.html");
 }
