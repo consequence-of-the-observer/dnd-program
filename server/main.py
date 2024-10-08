@@ -17,6 +17,12 @@ class Con_User(BaseModel):
     username: str
     password: str
 
+
+class Campaign(BaseModel):
+    name: str
+    code: str
+    gmId: str
+
 app = FastAPI()
 
 app.add_middleware(
@@ -71,6 +77,21 @@ def sql_confirmUser(data):
     else:
         return {"real_account": False}
 
+def sql_createCampaign(data):
+    conn = sqlite3.connect('server.db')
+    cursor = conn.cursor()
+
+    cursor.execute('''CREATE TABLE IF NOT EXISTS campaigns
+                    (id, name, code, gmId)''')
+
+    cursor.execute("INSERT INTO campaigns VALUES ('"+data["id"]+"','"+data["name"]+"','"+data["code"]+"','"+data["gmId"]+"')")
+
+
+    conn.commit()
+
+    conn.close()
+    print("campaign created")
+
 @app.get('/')
 def connecting_server():
     return {"connected": True}
@@ -107,3 +128,20 @@ def confirm_user(con_user: Con_User):
     find_account = sql_confirmUser(data)
 
     return find_account
+
+
+@app.post("/createNewCampaign")
+def create_campaign(campaign: Campaign):
+    new_uuid = uuid.uuid4()
+    data = {
+        "id": str(new_uuid),
+        "name": campaign.name,
+        "code": campaign.code,
+        "gmId": campaign.gmId
+    }
+
+    print(data)
+
+    sql_createCampaign(data)
+
+    return data

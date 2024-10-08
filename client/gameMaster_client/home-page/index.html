@@ -3,12 +3,24 @@
     <head>
         <title>Home Page</title>
         <script src="../get_environment.js"></script>
+        <script src="./get_user.js"></script>
+        <script src="./create_campaign.js"></script>
     </head>
 
     <body>
         <header>
             <h1>Welcome to The Dungeons and Dragons Program</h1>
         </header>
+
+        <div id="campaigns">
+            <div id="add_campaign" onClick="addCampaign()">
+                <h2>Create Campaign</h2>
+            </div>
+
+            <div id="new_campaign"></div>
+
+            <div id="campaign_list"></div>
+        </div>
 
         <footer>
             <p>Code by: Matthew Gray</p>
