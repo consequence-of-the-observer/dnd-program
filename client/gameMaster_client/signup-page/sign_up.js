@@ -32,5 +32,5 @@ function postUser(val) {
 }
 
 function signup_success(data) {
-  window.location.replace("/client/player_client/login-page/index.html");
+  window.location.replace("/client/gameMaster_client/login-page/index.html");
 }
