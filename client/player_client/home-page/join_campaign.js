@@ -1,12 +1,12 @@
-var new_campaign = false;
+var add_campaign = false;
 
 function addCampaign() {
-    new_campaign = true;
-    createNewCampaign();
+    add_campaign = true;
+    addNewCampaign();
 }
 
-function createNewCampaign() {
-    if(new_campaign === true) {
+function addNewCampaign() {
+    if(add_campaign === true) {
         let data = document.getElementById("new_campaign");
 
         data.innerHTML = `
@@ -15,7 +15,7 @@ function createNewCampaign() {
             <br>
             <b>Campaign Code:</b><input id="campaign_code">
             <br>
-            <button onClick="campaignData()">Create</button>
+            <button onClick="campaignData()">Join</button>
         `;
     }
 }
@@ -25,7 +25,7 @@ function campaignData() {
     let data = {
         name: document.getElementById("campaign_name").value,
         code: document.getElementById("campaign_code").value,
-        gmId: user.uuid
+        playerId: user.uuid
     };
 
     console.log(data);
@@ -33,7 +33,7 @@ function campaignData() {
 }
 
 function postCampaign(data) {
-    fetch(environment+"/createNewCampaign", {
+    fetch(environment+"/joinCampaign", {
         method: "POST",
         body: JSON.stringify(data),
         headers: {

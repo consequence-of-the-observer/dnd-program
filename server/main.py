@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 
-from routers import register_user, confirm_user, create_campaign
+from routers import register_user, confirm_user, create_campaign, join_campaign
 import sqlite3
 import uuid
 
@@ -23,3 +23,4 @@ def connecting_server():
 app.include_router(register_user.router)
 app.include_router(confirm_user.router)
 app.include_router(create_campaign.router)
+app.include_router(join_campaign.router)
