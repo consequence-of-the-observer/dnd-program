@@ -8,7 +8,8 @@ from routers import (
     create_campaign,
     join_campaign,
     player_campaignList,
-    gameMaster_campaignList
+    gameMaster_campaignList,
+    retrieve_playerList
 )
 import sqlite3
 import uuid
@@ -33,3 +34,4 @@ app.include_router(create_campaign.router)
 app.include_router(join_campaign.router)
 app.include_router(player_campaignList.router)
 app.include_router(gameMaster_campaignList.router)
+app.include_router(retrieve_playerList.router)
