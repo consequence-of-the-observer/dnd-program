@@ -33,6 +33,7 @@ function confirmRealAccount(data) {
     console.log("account does not exists");
   }else {
     console.log("account exists");
+    sessionStorage.setItem("user", JSON.stringify(data));
     window.location.replace("/client/player_client/home-page/index.html");
   }
 }
